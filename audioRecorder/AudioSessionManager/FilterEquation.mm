@@ -43,7 +43,7 @@
         _sampleFreq = sampleRate;
         _freq1 = cutoff;
         _order = order;
-        _type = LowPass;
+        _type = HighPass;
         _name = ButterWorth;
         
         [self calculateCoefficients];
@@ -58,7 +58,7 @@
         _freq1 = center;
         _freq2 = bw;
         _order = order;
-        _type = LowPass;
+        _type = BandPass;
         _name = ButterWorth;
         
         [self calculateCoefficients];

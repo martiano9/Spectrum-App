@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1AF61742-2876-44E3-89E5-88CC2721C13A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>audioRecorder</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7664844D-1FF9-4331-BA75-AEBE03F87CBE</key>
+		<string>https://github.com/levuhai/Spectrum-App.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>audioRecorder.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7664844D-1FF9-4331-BA75-AEBE03F87CBE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/levuhai/Spectrum-App.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7664844D-1FF9-4331-BA75-AEBE03F87CBE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7664844D-1FF9-4331-BA75-AEBE03F87CBE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Spectrum-App</string>
+		</dict>
+	</array>
+</dict>
+</plist>
