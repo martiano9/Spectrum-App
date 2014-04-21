@@ -25,6 +25,10 @@
 @property (nonatomic)float bpfFreq1;
 @property (nonatomic)float bpfFreq2;
 
+@property (nonatomic)float hpNoiseFloor;
+@property (nonatomic)float bpNoiseFloor;
+@property (nonatomic)float lpNoiseFloor;
+
 @property (nonatomic,strong) EZMicrophone *microphone;
 
 // Singleton methods

@@ -39,6 +39,9 @@
 		D7A99C7118FB8CB8004106FA /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = D7A99C6118FB8CB8004106FA /* TPCircularBuffer.c */; };
 		D7A99C7218FB8CB8004106FA /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = D7A99C6418FB8CB8004106FA /* CHANGELOG */; };
 		D7A99C7318FB8CB8004106FA /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = D7A99C6518FB8CB8004106FA /* VERSION */; };
+		D7AB6DB31904B8B200141C73 /* ACTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AB6DB21904B8B200141C73 /* ACTextField.m */; };
+		D7AB6E041905005700141C73 /* BSKeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AB6E031905005700141C73 /* BSKeyboardControls.m */; };
+		D7AB6E0A19053B5D00141C73 /* ACScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AB6E0919053B5D00141C73 /* ACScrollView.m */; };
 		E2789B5C18BF0257004CA810 /* HighPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2789B5B18BF0257004CA810 /* HighPassViewController.m */; };
 		E2789B5F18BF0263004CA810 /* BandPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2789B5E18BF0263004CA810 /* BandPassViewController.m */; };
 		E2789B6318BF1AAC004CA810 /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = E2789B6218BF1AAC004CA810 /* UIColor+Expanded.m */; };
@@ -156,6 +159,12 @@
 		D7A99C6218FB8CB8004106FA /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
 		D7A99C6418FB8CB8004106FA /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
 		D7A99C6518FB8CB8004106FA /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
+		D7AB6DB11904B8B200141C73 /* ACTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTextField.h; sourceTree = "<group>"; };
+		D7AB6DB21904B8B200141C73 /* ACTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACTextField.m; sourceTree = "<group>"; };
+		D7AB6E021905005700141C73 /* BSKeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSKeyboardControls.h; sourceTree = "<group>"; };
+		D7AB6E031905005700141C73 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
+		D7AB6E0819053B5D00141C73 /* ACScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACScrollView.h; sourceTree = "<group>"; };
+		D7AB6E0919053B5D00141C73 /* ACScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACScrollView.m; sourceTree = "<group>"; };
 		E2789B5A18BF0257004CA810 /* HighPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighPassViewController.h; sourceTree = "<group>"; };
 		E2789B5B18BF0257004CA810 /* HighPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighPassViewController.m; sourceTree = "<group>"; };
 		E2789B5D18BF0263004CA810 /* BandPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BandPassViewController.h; sourceTree = "<group>"; };
@@ -367,6 +376,26 @@
 			path = VERSION;
 			sourceTree = "<group>";
 		};
+		D7AB6DB01904B89200141C73 /* HLFloatTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D7AB6E0819053B5D00141C73 /* ACScrollView.h */,
+				D7AB6E0919053B5D00141C73 /* ACScrollView.m */,
+				D7AB6DB11904B8B200141C73 /* ACTextField.h */,
+				D7AB6DB21904B8B200141C73 /* ACTextField.m */,
+			);
+			name = HLFloatTextField;
+			sourceTree = "<group>";
+		};
+		D7AB6E011905003900141C73 /* BSKeyboardControls */ = {
+			isa = PBXGroup;
+			children = (
+				D7AB6E021905005700141C73 /* BSKeyboardControls.h */,
+				D7AB6E031905005700141C73 /* BSKeyboardControls.m */,
+			);
+			name = BSKeyboardControls;
+			sourceTree = "<group>";
+		};
 		E2789B6018BF1A9C004CA810 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +510,8 @@
 		E2CE697718BDD5F000B05ABE /* References */ = {
 			isa = PBXGroup;
 			children = (
+				D7AB6E011905003900141C73 /* BSKeyboardControls */,
+				D7AB6DB01904B89200141C73 /* HLFloatTextField */,
 				D79B070E18FDFD710071C917 /* DSPFilters */,
 				D7A99C4A18FB8CB8004106FA /* EZAudio */,
 				E2789B6018BF1A9C004CA810 /* Category */,
@@ -643,6 +674,7 @@
 				E2CE693318BDD32800B05ABE /* AppDelegate.m in Sources */,
 				E2CE696B18BDD33800B05ABE /* AMSlideMenuLeftMenuSegue.m in Sources */,
 				D79B074618FDFD710071C917 /* PoleFilter.cpp in Sources */,
+				D7AB6E0A19053B5D00141C73 /* ACScrollView.m in Sources */,
 				D7A99C7118FB8CB8004106FA /* TPCircularBuffer.c in Sources */,
 				E2ACDD6218BDFAEE0097CAE1 /* LeftViewController.m in Sources */,
 				D7A99C6C18FB8CB8004106FA /* EZAudioPlotGLKViewController.m in Sources */,
@@ -659,12 +691,14 @@
 				D7A99C6D18FB8CB8004106FA /* EZMicrophone.m in Sources */,
 				E2789B6318BF1AAC004CA810 /* UIColor+Expanded.m in Sources */,
 				D7A99C6F18FB8CB8004106FA /* EZPlot.m in Sources */,
+				D7AB6DB31904B8B200141C73 /* ACTextField.m in Sources */,
 				D7A99C6718FB8CB8004106FA /* EZAudio.m in Sources */,
 				D7A99C6A18FB8CB8004106FA /* EZAudioPlot.m in Sources */,
 				E2789B5F18BF0263004CA810 /* BandPassViewController.m in Sources */,
 				D79B074418FDFD710071C917 /* Legendre.cpp in Sources */,
 				E2ACDD7418BED9410097CAE1 /* LowPassViewController.m in Sources */,
 				D79B074718FDFD710071C917 /* RBJ.cpp in Sources */,
+				D7AB6E041905005700141C73 /* BSKeyboardControls.m in Sources */,
 				E2789B5C18BF0257004CA810 /* HighPassViewController.m in Sources */,
 				E2CE696D18BDD33800B05ABE /* AMSlideMenuMainViewController.m in Sources */,
 				E2CE692F18BDD32800B05ABE /* main.m in Sources */,

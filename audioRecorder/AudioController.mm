@@ -43,6 +43,9 @@ static AudioController *sharedInstance = nil;
 @synthesize hpfFreq1 = _hpfFreq1;
 @synthesize bpfFreq1 = _bpfFreq1;
 @synthesize bpfFreq2 = _bpfFreq2;
+@synthesize hpNoiseFloor = _hpNoiseFloor;
+@synthesize bpNoiseFloor = _bpNoiseFloor;
+@synthesize lpNoiseFloor = _lpNoiseFloor;
 
 #pragma mark - Singleton
 
@@ -78,14 +81,14 @@ static AudioController *sharedInstance = nil;
         [self.microphone startFetchingAudio];
         
         if (self.lpfFreq1 == 0.0) self.lpfFreq1 = 100;
-        _lowpass = [[FilterEquation alloc] initLowPass:ButterWorth sampleRate:44100 cutoffFrequency:4410 order:2];
+        _lowpass = [[FilterEquation alloc] initLowPass:ButterWorth sampleRate:44100 cutoffFrequency:self.lpfFreq1 order:2];
         
         if (self.hpfFreq1 == 0.0) self.hpfFreq1 = 100;
-        _highpass = [[FilterEquation alloc] initHighPass:ButterWorth sampleRate:44100 cutoffFrequency:1000 order:2];
+        _highpass = [[FilterEquation alloc] initHighPass:ButterWorth sampleRate:44100 cutoffFrequency:self.hpfFreq1 order:2];
         
         if (self.bpfFreq1 == 0.0) self.bpfFreq1 = 1000;
         if (self.bpfFreq2 == 0.0) self.bpfFreq2 = 100;
-        _bandpass = [[FilterEquation alloc] initBandPass:ButterWorth sampleRate:44100 centerFrequency:400 bandWidth:200 order:2];
+        _bandpass = [[FilterEquation alloc] initBandPass:ButterWorth sampleRate:44100 centerFrequency:self.bpfFreq1 bandWidth:self.bpfFreq2 order:2];
         
     }
     return self;
@@ -233,6 +236,51 @@ static AudioController *sharedInstance = nil;
     return _bpfFreq2;
 }
 
+- (void)setHpNoiseFloor:(float)hpNoiseFloor {
+    _hpNoiseFloor = hpNoiseFloor;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithFloat:_hpNoiseFloor] forKey:hpNoiseFloorKey];
+    [defaults synchronize];
+}
+
+- (float)hpNoiseFloor {
+    if (_hpNoiseFloor == 0) {
+        self.hpNoiseFloor = noiseFloorDefaultValue;
+    }
+    return _hpNoiseFloor;
+}
+
+- (void)setBpNoiseFloor:(float)bpNoiseFloor {
+    _bpNoiseFloor = bpNoiseFloor;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithFloat:_bpNoiseFloor] forKey:bpNoiseFloorKey];
+    [defaults synchronize];
+}
+
+- (float)bpNoiseFloor {
+    if (_bpNoiseFloor == 0) {
+        self.bpNoiseFloor = noiseFloorDefaultValue;
+    }
+    return _bpNoiseFloor;
+}
+
+- (void)setLpNoiseFloor:(float)lpNoiseFloor {
+    _lpNoiseFloor = lpNoiseFloor;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithFloat:_lpNoiseFloor] forKey:bpNoiseFloorKey];
+    [defaults synchronize];
+}
+
+- (float)lpNoiseFloor {
+    if (_lpNoiseFloor == 0) {
+        self.lpNoiseFloor = noiseFloorDefaultValue;
+    }
+    return _lpNoiseFloor;
+}
+
 #pragma mark - EZMicrophoneDelegate
 
 -(void)microphone:(EZMicrophone *)microphone
@@ -250,32 +298,39 @@ withNumberOfChannels:(UInt32)numberOfChannels {
 //        printf("Decibel level: %f\n", dbVal);
         
         // New code
-//        for (int i = 0; i<bufferSize; i++) {
-//            lpf = [_lowpass calculate:*buffer[0]];
-//            lpf = decibel(lpf) + 30;
-//            lpf = lpf < 0 ? 0 : lpf;
-//            
-//            hpf = [_highpass calculate:*buffer[0]];
-//            hpf = decibel(hpf) + 50;
-//            hpf = hpf < 0 ? 0 : hpf;
-//            
-//            bpf = [_bandpass calculate:*buffer[0]];
-//            bpf = decibel(bpf) + 50;
-//            bpf = bpf < 0 ? 0 : bpf;
-//        }
+        lpf = 0;
+        hpf = 0;
+        bpf = 0;
         
-        float amplitude = [EZAudio RMS: buffer[0] length:bufferSize];
-        lpf = [_lowpass calculate:amplitude];
-        lpf = decibel(lpf) + 50;
+        for (int i = 0; i<bufferSize; i++) {
+            lpf += fabsf([_lowpass calculate:buffer[0][i]]);
+            
+            hpf += fabsf([_highpass calculate:buffer[0][i]]);
+            
+            bpf += fabsf([_bandpass calculate:buffer[0][i]]);
+            
+        }
+        lpf = decibel(lpf/bufferSize) + 60;
         lpf = lpf < 0 ? 0 : lpf;
         
-        hpf = [_highpass calculate:amplitude];
-        hpf = decibel(hpf) + 50;
+        hpf = decibel(hpf/bufferSize) + self.hpNoiseFloor;
         hpf = hpf < 0 ? 0 : hpf;
         
-        bpf = [_bandpass calculate:amplitude];
-        bpf = decibel(bpf) + 50;
+        bpf = decibel(bpf/bufferSize) + 60;
         bpf = bpf < 0 ? 0 : bpf;
+        
+//        float amplitude = [EZAudio average:buffer[0] length:bufferSize];
+//        lpf = [_lowpass calculate:amplitude];
+//        lpf = decibel(lpf) + 50;
+//        lpf = lpf < 0 ? 0 : lpf;
+//        
+//        hpf = [_highpass calculate:amplitude];
+//        hpf = decibel(hpf) + 50;
+//        hpf = hpf < 0 ? 0 : hpf;
+//        
+//        bpf = [_bandpass calculate:amplitude];
+//        bpf = decibel(bpf) + 50;
+//        bpf = bpf < 0 ? 0 : bpf;
         
     });
 }

@@ -9,8 +9,11 @@
 #import "LowPassViewController.h"
 #import "AudioController.h"
 #import "AMGraphView.h"
+#import "UIColor+Expanded.h"
+#import "ACTextField.h"
+#import "ACScrollView.h"
 
-@interface LowPassViewController () {
+@interface LowPassViewController () <UITextFieldDelegate> {
     AudioController *_audioController;
     NSTimer *_timer;
 }
@@ -26,6 +29,14 @@
     [self startDrawing];
     
     [waveView setMinVal:0 maxVal:75];
+    // Textfield
+    [cutOffTextField setDelegate:self];
+    [cutOffTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [cutOffTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
+    
+    [noiseFloorTextField setDelegate:self];
+    [noiseFloorTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [noiseFloorTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
 }
 
 - (void)waveViewUpdate{
@@ -65,9 +76,9 @@
     BSlider.value = blue;
     GSlider.value = green;
     
-    // Set value for stepper
-    stepper.value = _audioController.lpfFreq1;
-    cutOffLabel.text = [NSString stringWithFormat:@"%d",(int)stepper.value] ;
+    // Set value text fields
+    cutOffTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.lpfFreq1];
+    noiseFloorTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.lpNoiseFloor];
 }
 
 - (void)updateColor {
@@ -82,11 +93,29 @@
     [waveView setNeedUpdate];
 }
 
-- (IBAction)CutoffValueChanged:(UIStepper *)sender {
-    double value = [sender value];
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    float value;
+    if (textField.text.length == 0) {
+        value = 50;
+        textField.text = [NSString stringWithFormat:@"%.0f",value];
+    } else {
+        value = [textField.text floatValue];
+    }
     
-    [cutOffLabel setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.lpfFreq1 = sender.value;
+    if (textField == cutOffTextField) {
+        _audioController.lpfFreq1 = value;
+    } else if (textField == noiseFloorTextField) {
+        _audioController.lpNoiseFloor = value;
+    }
 }
+
+#pragma mark - Touch Events
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
+
 
 @end

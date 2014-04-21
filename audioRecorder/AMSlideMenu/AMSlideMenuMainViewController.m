@@ -406,6 +406,7 @@ static NSMutableArray *allInstances;
 
 - (void)openLeftMenu
 {
+    [self.view endEditing:YES];
     [self openLeftMenuAnimated:YES];
 }
 

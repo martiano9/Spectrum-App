@@ -16,4 +16,9 @@
 #define hpfGraphColorKey @"XColor"
 #define bpfGraphColorKey @"YColor"
 
+#define noiseFloorDefaultValue 50
+#define hpNoiseFloorKey @"kHPNoiseFloor"
+#define bpNoiseFloorKey @"kBPNoiseFloor"
+#define lpNoiseFloorKey @"kLPNoiseFloor"
+
 

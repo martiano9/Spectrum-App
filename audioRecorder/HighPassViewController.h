@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class AMGraphView;
+@class ACTextField;
+@class ACScrollView;
 
 @interface HighPassViewController : UIViewController {
     IBOutlet AMGraphView* waveView;
@@ -16,8 +19,10 @@
     IBOutlet UISlider *RSlider;
     IBOutlet UISlider *BSlider;
     IBOutlet UISlider *GSlider;
-    IBOutlet UILabel *cutOffLabel;
-    IBOutlet UIStepper *stepper;
+    
+    IBOutlet ACTextField *cutOffTextField;
+    IBOutlet ACTextField *noiseFloorTextField;
+    IBOutlet ACScrollView *scoller;
 }
 
 @end

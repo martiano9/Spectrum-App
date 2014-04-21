@@ -9,8 +9,11 @@
 #import "BandPassViewController.h"
 #import "AudioController.h"
 #import "AMGraphView.h"
+#import "ACScrollView.h"
+#import "ACTextField.h"
+#import "UIColor+Expanded.h"
 
-@interface BandPassViewController () {
+@interface BandPassViewController () <UITextFieldDelegate>  {
     AudioController *_audioController;
     NSTimer *_timer;
 }
@@ -26,6 +29,20 @@
     [self startDrawing];
     
     [waveView setMinVal:0 maxVal:75];
+    
+    // Textfield
+    [cutOffTextField setDelegate:self];
+    [cutOffTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [cutOffTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
+    
+    [noiseFloorTextField setDelegate:self];
+    [noiseFloorTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [noiseFloorTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
+    
+    [bandwidthTextField setDelegate:self];
+    [bandwidthTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [bandwidthTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
+
 }
 
 - (void)waveViewUpdate{
@@ -64,12 +81,11 @@
     BSlider.value = blue;
     GSlider.value = green;
     
-    // Set value for stepper
-    stepper.value = _audioController.bpfFreq1;
-    cutOffLabel.text = [NSString stringWithFormat:@"%d",(int)stepper.value] ;
-    
-    BWStepper.value = _audioController.bpfFreq2;
-    BWLabel.text = [NSString stringWithFormat:@"%d",(int)BWStepper.value] ;
+    // Set value text field
+    cutOffTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.bpfFreq1];
+    bandwidthTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.bpfFreq2];
+
+    noiseFloorTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.bpNoiseFloor];
 }
 
 - (void)updateColor {
@@ -84,18 +100,31 @@
     [waveView setNeedUpdate];
 }
 
-- (IBAction)CutoffValueChanged:(UIStepper *)sender {
-    double value = [sender value];
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    float value;
+    if (textField.text.length == 0) {
+        value = 50;
+        textField.text = [NSString stringWithFormat:@"%.0f",value];
+    } else {
+        value = [textField.text floatValue];
+    }
     
-    [cutOffLabel setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.bpfFreq1 = sender.value;
+    if (textField == cutOffTextField) {
+        _audioController.bpfFreq1 = value;
+    } else if (textField == noiseFloorTextField) {
+        _audioController.bpNoiseFloor = value;
+    } else if (textField == bandwidthTextField) {
+        _audioController.bpfFreq2 = value;
+    }
+
 }
 
-- (IBAction)BWValueChanged:(UIStepper *)sender {
-    double value = [sender value];
-    
-    [BWLabel setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.bpfFreq2 = sender.value;
+#pragma mark - Touch Events
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
 }
 
 @end

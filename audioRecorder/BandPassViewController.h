@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class AMGraphView;
+@class ACScrollView;
+@class ACTextField;
 
 @interface BandPassViewController : UIViewController {
     IBOutlet AMGraphView* waveView;
@@ -16,10 +18,11 @@
     IBOutlet UISlider *RSlider;
     IBOutlet UISlider *BSlider;
     IBOutlet UISlider *GSlider;
-    IBOutlet UILabel *cutOffLabel;
-    IBOutlet UILabel *BWLabel;
-    IBOutlet UIStepper *stepper;
-    IBOutlet UIStepper *BWStepper;
+    
+    IBOutlet ACTextField *cutOffTextField;
+    IBOutlet ACTextField *bandwidthTextField;
+    IBOutlet ACTextField *noiseFloorTextField;
+    IBOutlet ACScrollView *scoller;
 }
 
 @end
