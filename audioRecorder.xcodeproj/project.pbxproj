@@ -40,7 +40,6 @@
 		D7A99C7218FB8CB8004106FA /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = D7A99C6418FB8CB8004106FA /* CHANGELOG */; };
 		D7A99C7318FB8CB8004106FA /* VERSION in Resources */ = {isa = PBXBuildFile; fileRef = D7A99C6518FB8CB8004106FA /* VERSION */; };
 		D7AB6DB31904B8B200141C73 /* ACTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AB6DB21904B8B200141C73 /* ACTextField.m */; };
-		D7AB6E041905005700141C73 /* BSKeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AB6E031905005700141C73 /* BSKeyboardControls.m */; };
 		D7AB6E0A19053B5D00141C73 /* ACScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7AB6E0919053B5D00141C73 /* ACScrollView.m */; };
 		E2789B5C18BF0257004CA810 /* HighPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2789B5B18BF0257004CA810 /* HighPassViewController.m */; };
 		E2789B5F18BF0263004CA810 /* BandPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2789B5E18BF0263004CA810 /* BandPassViewController.m */; };
@@ -73,7 +72,6 @@
 		E2CE696F18BDD33800B05ABE /* AMSlideMenuRightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CE696718BDD33800B05ABE /* AMSlideMenuRightTableViewController.m */; };
 		E2CE697018BDD33800B05ABE /* UIViewController+AMSlideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CE696918BDD33800B05ABE /* UIViewController+AMSlideMenu.m */; };
 		E2CE697318BDD35700B05ABE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CE697218BDD35700B05ABE /* MainViewController.m */; };
-		E2CE699A18BDD78400B05ABE /* FilterEquation.mm in Sources */ = {isa = PBXBuildFile; fileRef = E2CE698B18BDD78400B05ABE /* FilterEquation.mm */; };
 		E2CE699B18BDD78400B05ABE /* AMGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CE698D18BDD78400B05ABE /* AMGraphView.m */; };
 		E2CE69AF18BDD81D00B05ABE /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CE69AE18BDD81D00B05ABE /* GraphViewController.m */; };
 		E2CE69B618BDD88100B05ABE /* AudioController.mm in Sources */ = {isa = PBXBuildFile; fileRef = E2CE69B418BDD88100B05ABE /* AudioController.mm */; };
@@ -161,8 +159,6 @@
 		D7A99C6518FB8CB8004106FA /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		D7AB6DB11904B8B200141C73 /* ACTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACTextField.h; sourceTree = "<group>"; };
 		D7AB6DB21904B8B200141C73 /* ACTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACTextField.m; sourceTree = "<group>"; };
-		D7AB6E021905005700141C73 /* BSKeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSKeyboardControls.h; sourceTree = "<group>"; };
-		D7AB6E031905005700141C73 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
 		D7AB6E0819053B5D00141C73 /* ACScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACScrollView.h; sourceTree = "<group>"; };
 		D7AB6E0919053B5D00141C73 /* ACScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACScrollView.m; sourceTree = "<group>"; };
 		E2789B5A18BF0257004CA810 /* HighPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighPassViewController.h; sourceTree = "<group>"; };
@@ -214,8 +210,6 @@
 		E2CE696918BDD33800B05ABE /* UIViewController+AMSlideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AMSlideMenu.m"; sourceTree = "<group>"; };
 		E2CE697118BDD35700B05ABE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		E2CE697218BDD35700B05ABE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		E2CE698A18BDD78400B05ABE /* FilterEquation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FilterEquation.h; path = AudioSessionManager/FilterEquation.h; sourceTree = "<group>"; };
-		E2CE698B18BDD78400B05ABE /* FilterEquation.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = FilterEquation.mm; path = AudioSessionManager/FilterEquation.mm; sourceTree = "<group>"; };
 		E2CE698C18BDD78400B05ABE /* AMGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMGraphView.h; path = AudioSessionManager/AMGraphView.h; sourceTree = "<group>"; };
 		E2CE698D18BDD78400B05ABE /* AMGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMGraphView.m; path = AudioSessionManager/AMGraphView.m; sourceTree = "<group>"; };
 		E2CE69AD18BDD81D00B05ABE /* GraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
@@ -387,15 +381,6 @@
 			name = HLFloatTextField;
 			sourceTree = "<group>";
 		};
-		D7AB6E011905003900141C73 /* BSKeyboardControls */ = {
-			isa = PBXGroup;
-			children = (
-				D7AB6E021905005700141C73 /* BSKeyboardControls.h */,
-				D7AB6E031905005700141C73 /* BSKeyboardControls.m */,
-			);
-			name = BSKeyboardControls;
-			sourceTree = "<group>";
-		};
 		E2789B6018BF1A9C004CA810 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,7 +495,6 @@
 		E2CE697718BDD5F000B05ABE /* References */ = {
 			isa = PBXGroup;
 			children = (
-				D7AB6E011905003900141C73 /* BSKeyboardControls */,
 				D7AB6DB01904B89200141C73 /* HLFloatTextField */,
 				D79B070E18FDFD710071C917 /* DSPFilters */,
 				D7A99C4A18FB8CB8004106FA /* EZAudio */,
@@ -528,8 +512,6 @@
 				E2CE698D18BDD78400B05ABE /* AMGraphView.m */,
 				E2CE69B818BDD8D500B05ABE /* AudioController.h */,
 				E2CE69B418BDD88100B05ABE /* AudioController.mm */,
-				E2CE698A18BDD78400B05ABE /* FilterEquation.h */,
-				E2CE698B18BDD78400B05ABE /* FilterEquation.mm */,
 				E2CE69B518BDD88100B05ABE /* Configs.h */,
 			);
 			name = Models;
@@ -685,7 +667,6 @@
 				D79B074318FDFD710071C917 /* Filter.cpp in Sources */,
 				D7A99C6618FB8CB8004106FA /* AEFloatConverter.m in Sources */,
 				D79B074518FDFD710071C917 /* Param.cpp in Sources */,
-				E2CE699A18BDD78400B05ABE /* FilterEquation.mm in Sources */,
 				D79B073A18FDFD710071C917 /* Biquad.cpp in Sources */,
 				E2CE69B618BDD88100B05ABE /* AudioController.mm in Sources */,
 				D7A99C6D18FB8CB8004106FA /* EZMicrophone.m in Sources */,
@@ -698,7 +679,6 @@
 				D79B074418FDFD710071C917 /* Legendre.cpp in Sources */,
 				E2ACDD7418BED9410097CAE1 /* LowPassViewController.m in Sources */,
 				D79B074718FDFD710071C917 /* RBJ.cpp in Sources */,
-				D7AB6E041905005700141C73 /* BSKeyboardControls.m in Sources */,
 				E2789B5C18BF0257004CA810 /* HighPassViewController.m in Sources */,
 				E2CE696D18BDD33800B05ABE /* AMSlideMenuMainViewController.m in Sources */,
 				E2CE692F18BDD32800B05ABE /* main.m in Sources */,
