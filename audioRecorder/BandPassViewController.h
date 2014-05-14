@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class EZAudioPlot;
 @class AMGraphView;
 @class ACScrollView;
 @class ACTextField;
 
 @interface BandPassViewController : UIViewController {
-    IBOutlet AMGraphView* waveView;
+    IBOutlet EZAudioPlot* waveView;
     IBOutlet UIView *colorView;
     IBOutlet UISlider *RSlider;
     IBOutlet UISlider *BSlider;
@@ -22,6 +23,8 @@
     IBOutlet ACTextField *cutOffTextField;
     IBOutlet ACTextField *bandwidthTextField;
     IBOutlet ACTextField *noiseFloorTextField;
+    IBOutlet ACTextField *filterOrderTextField;
+    IBOutlet ACTextField *waveTypeTextField;
     IBOutlet ACScrollView *scoller;
 }
 

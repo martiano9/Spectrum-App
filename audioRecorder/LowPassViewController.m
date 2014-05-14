@@ -8,14 +8,13 @@
 
 #import "LowPassViewController.h"
 #import "AudioController.h"
-#import "AMGraphView.h"
 #import "UIColor+Expanded.h"
+#import "UIImage+Expanded.h"
 #import "ACTextField.h"
 #import "ACScrollView.h"
 
-@interface LowPassViewController () <UITextFieldDelegate> {
+@interface LowPassViewController () <UITextFieldDelegate, AudioControllerDelegate> {
     AudioController *_audioController;
-    NSTimer *_timer;
 }
 @end
 
@@ -25,10 +24,29 @@
 {
     [super viewDidLoad];
     _audioController = [AudioController sharedInstance];
+    _audioController.delegate = self;
     
-    [self startDrawing];
+    // Wave view
+    waveView.plotType        = EZPlotTypeRolling;
+    waveView.shouldFill      = YES;
+    waveView.gain            = _audioController.lowPassGain;
+    waveView.color           = _audioController.lowPassGraphColor;
+    waveView.backgroundColor = [UIColor colorWithWhite:.3 alpha:1];
+    waveView.gain            = _audioController.lowPassGain;
     
-    [waveView setMinVal:0 maxVal:75];
+    // Display color view
+    [colorView setBackgroundColor:_audioController.lowPassGraphColor];
+    
+    // Set value for sliders
+    CGFloat red = 0.0, green = 0.0, blue = 0.0, alpha =0.0;
+    [colorView.backgroundColor getRed:&red
+                                green:&green
+                                 blue:&blue
+                                alpha:&alpha];
+    RSlider.value = red;
+    BSlider.value = blue;
+    GSlider.value = green;
+    
     // Textfield
     [cutOffTextField setDelegate:self];
     [cutOffTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
@@ -37,64 +55,60 @@
     [noiseFloorTextField setDelegate:self];
     [noiseFloorTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
     [noiseFloorTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
-}
+    
+    [filterOrderTextField setDelegate:self];
+    [filterOrderTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [filterOrderTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
+    [filterOrderTextField setType:ACPickerFieldType];
+    [filterOrderTextField setPickerData:[NSArray arrayWithObjects:
+                                         @"2nd Order",
+                                         @"3rd Order",
+                                         @"4th Order",
+                                         @"5th Order",
+                                         @"6th Order",
+                                         @"7th Order",
+                                         @"8th Order",
+                                         @"9th Order",
+                                         @"10th Order",nil]];
+    [filterOrderTextField setPickerIndex:_audioController.lowPassFilterOrder-2];
+    
+    [waveTypeTextField setDelegate:self];
+    [waveTypeTextField setPlaceholderColor:[UIColor colorWithHexString:@"#16A085"]];
+    [waveTypeTextField setFloatingLabelActiveTextColor:[UIColor colorWithHexString:@"#1ABC9C"]];
+    [waveTypeTextField setType:ACPickerFieldType];
+    [waveTypeTextField setPickerData:[NSArray arrayWithObjects:@"Buffer",@"Rolling",nil]];
+    [waveTypeTextField setPickerIndex:1];
+    
+    // Set value text field
+    cutOffTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.lowPassCutOff];
+    noiseFloorTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.lowPassGain];
+    
+    // Change thumb size
+    UIImage *thumbImage = [UIImage whiteCircle];
+    [RSlider setThumbImage:thumbImage forState:UIControlStateNormal];
+    [BSlider setThumbImage:thumbImage forState:UIControlStateNormal];
+    [GSlider setThumbImage:thumbImage forState:UIControlStateNormal];
 
-- (void)waveViewUpdate{
-    float lpf = _audioController.lpf;
-    [waveView addX:0 y:0 z:lpf];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (void)startDrawing {
-    if (![_timer isValid]) {
-        _timer=[NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(waveViewUpdate) userInfo:nil repeats:YES];
-    }
-}
-
-- (void)stopDrawing {
-    [_timer invalidate];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [self stopDrawing];
-    _audioController.lpGraphColor = [UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self startDrawing];
-    // Display color view
-    [colorView setBackgroundColor:_audioController.lpGraphColor];
-    
-    // Set value for sliders
-    CGFloat red = 0.0, green = 0.0, blue = 0.0, alpha =0.0;
-    [colorView.backgroundColor getRed:&red green:&green blue:&blue alpha:&alpha];
-    RSlider.value = red;
-    BSlider.value = blue;
-    GSlider.value = green;
-    
-    // Set value text fields
-    cutOffTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.lpfFreq1];
-    noiseFloorTextField.text = [NSString stringWithFormat:@"%.0f",_audioController.lpNoiseFloor];
-}
-
-- (void)updateColor {
-    _audioController.lpGraphColor = [UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1];
+    _audioController.delegate = nil;
 }
 
 #pragma Actions
 
 - (IBAction)RBGChanged:(id)sender {
-    [colorView setBackgroundColor:[UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1]];
-    [self updateColor];
-    [waveView setNeedUpdate];
+    UIColor *color = [UIColor colorWithRed:RSlider.value
+                                     green:GSlider.value
+                                      blue:BSlider.value
+                                     alpha:1];
+    [self changeColor:color];
 }
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    ACTextField* foo = (ACTextField*)textField;
     float value;
     if (textField.text.length == 0) {
         value = 50;
@@ -104,9 +118,18 @@
     }
     
     if (textField == cutOffTextField) {
-        _audioController.lpfFreq1 = value;
+        _audioController.lowPassCutOff = value;
+        [_audioController resetLowPassFilter];
     } else if (textField == noiseFloorTextField) {
-        _audioController.lpNoiseFloor = value;
+        _audioController.lowPassGain = value;
+        waveView.gain = value;
+    } else if (textField == filterOrderTextField) {
+        _audioController.lowPassFilterOrder = foo.pickerIndex + 2;
+        [_audioController resetLowPassFilter];
+    }
+    else if (textField == waveTypeTextField) {
+        waveView.shouldFill = foo.pickerIndex;
+        waveView.plotType = foo.pickerIndex;
     }
 }
 
@@ -117,5 +140,18 @@
     [super touchesBegan:touches withEvent:event];
 }
 
+#pragma mark - AudioControllerDelegate
+
+- (void)lowPassDidFinish:(float *)data withBufferSize:(UInt32)bufferSize{
+    [waveView updateBuffer:data withBufferSize:bufferSize];
+}
+
+#pragma mark - Private Category
+
+- (void)changeColor:(UIColor*)color {
+    [colorView setBackgroundColor:color];
+    _audioController.lowPassGraphColor = color;
+    waveView.color = color;
+}
 
 @end

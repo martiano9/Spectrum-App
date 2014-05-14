@@ -160,6 +160,7 @@ CGFloat ACStatusBarHeight()
 
 - (void)keyboardWillHide:(NSNotification*) notification {
     [UIView animateWithDuration:.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        _offset.y = 0.0;
         self.contentOffset = _offset;
     }completion:NULL];
 }

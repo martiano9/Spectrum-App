@@ -44,95 +44,102 @@
 @end
 
 @implementation EZAudioPlot
-@synthesize backgroundColor = _backgroundColor;
-@synthesize color           = _color;
-@synthesize gain            = _gain;
-@synthesize plotType        = _plotType;
-@synthesize shouldFill      = _shouldFill;
-@synthesize shouldMirror    = _shouldMirror;
+@synthesize backgroundColor         = _backgroundColor;
+@synthesize color                   = _color;
+@synthesize gain                    = _gain;
+@synthesize plotType                = _plotType;
+@synthesize shouldFill              = _shouldFill;
+@synthesize shouldMirror            = _shouldMirror;
+@synthesize shouldDrawFromMiddle    = _shouldDrawFromMiddle;
 
 #pragma mark - Initialization
--(id)init {
-  self = [super init];
-  if(self){
-    [self initPlot];
-  }
-  return self;
+- (id)init {
+    self = [super init];
+    if(self){
+        [self initPlot];
+    }
+    return self;
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder {
-  self = [super initWithCoder:aDecoder];
-  if(self){
-    [self initPlot];
-  }
-  return self;
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        [self initPlot];
+    }
+    return self;
 }
 
 #if TARGET_OS_IPHONE
--(id)initWithFrame:(CGRect)frameRect {
+- (id)initWithFrame:(CGRect)frameRect {
 #elif TARGET_OS_MAC
--(id)initWithFrame:(NSRect)frameRect {
+- (id)initWithFrame:(NSRect)frameRect {
 #endif
-  self = [super initWithFrame:frameRect];
-  if(self){
-    [self initPlot];
-  }
-  return self;
+    self = [super initWithFrame:frameRect];
+    if(self){
+        [self initPlot];
+    }
+    return self;
 }
   
--(void)initPlot {
+- (void)initPlot {
 #if TARGET_OS_IPHONE
-  self.backgroundColor = [UIColor blackColor];
-  self.color           = [UIColor colorWithHue:0 saturation:1.0 brightness:1.0 alpha:1.0];
+    self.backgroundColor = [UIColor blackColor];
+    self.color           = [UIColor colorWithHue:0 saturation:1.0 brightness:1.0 alpha:1.0];
 #elif TARGET_OS_MAC
-  self.backgroundColor = [NSColor blackColor];
-  self.color           = [NSColor colorWithCalibratedHue:0 saturation:1.0 brightness:1.0 alpha:1.0];
+    self.backgroundColor = [NSColor blackColor];
+    self.color           = [NSColor colorWithCalibratedHue:0 saturation:1.0 brightness:1.0 alpha:1.0];
 #endif
-  self.gain            = 1.0;
-  self.plotType        = EZPlotTypeRolling;
-  self.shouldMirror    = NO;
-  self.shouldFill      = NO;
-  _sampleData          = NULL;
-  _scrollHistory       = NULL;
-  _scrollHistoryLength = kEZAudioPlotDefaultHistoryBufferLength;
+    self.gain            = 1.0;
+    self.plotType        = EZPlotTypeRolling;
+    self.shouldMirror    = NO;
+    self.shouldFill      = NO;
+    self.shouldDrawFromMiddle = NO;
+    _sampleData          = NULL;
+    _scrollHistory       = NULL;
+    _scrollHistoryLength = kEZAudioPlotDefaultHistoryBufferLength;
 }
   
 #pragma mark - Setters
--(void)setBackgroundColor:(id)backgroundColor {
-  _backgroundColor = backgroundColor;
-  [self _refreshDisplay];
+- (void)setBackgroundColor:(id)backgroundColor {
+    _backgroundColor = backgroundColor;
+    [self _refreshDisplay];
 }
   
--(void)setColor:(id)color {
-  _color = color;
-  [self _refreshDisplay];
+- (void)setColor:(id)color {
+    _color = color;
+    [self _refreshDisplay];
 }
   
--(void)setGain:(float)gain {
-  _gain = gain;
-  [self _refreshDisplay];
+- (void)setGain:(float)gain {
+    _gain = gain;
+    [self _refreshDisplay];
 }
 
--(void)setPlotType:(EZPlotType)plotType {
-  _plotType = plotType;
-  [self _refreshDisplay];
+- (void)setPlotType:(EZPlotType)plotType {
+    _plotType = plotType;
+    [self _refreshDisplay];
 }
 
--(void)setShouldFill:(BOOL)shouldFill {
-  _shouldFill = shouldFill;
-  [self _refreshDisplay];
+- (void)setShouldFill:(BOOL)shouldFill {
+    _shouldFill = shouldFill;
+    [self _refreshDisplay];
 }
 
--(void)setShouldMirror:(BOOL)shouldMirror {
-  _shouldMirror = shouldMirror;
-  [self _refreshDisplay];
+- (void)setShouldMirror:(BOOL)shouldMirror {
+    _shouldMirror = shouldMirror;
+    [self _refreshDisplay];
+}
+    
+- (void)setShouldDrawFromMiddle:(BOOL)shouldDrawFromMiddle {
+    _shouldDrawFromMiddle = shouldDrawFromMiddle;
+    [self _refreshDisplay];
 }
   
--(void)_refreshDisplay {
+- (void)_refreshDisplay {
 #if TARGET_OS_IPHONE
-  [self setNeedsDisplay];
+    [self setNeedsDisplay];
 #elif TARGET_OS_MAC
-  [self setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
 #endif
 }
   
@@ -188,14 +195,12 @@
 #pragma mark - Drawing
   
 #if TARGET_OS_IPHONE
-- (void)drawRect:(CGRect)rect
-{
-  CGContextRef ctx = UIGraphicsGetCurrentContext();
-  CGContextSaveGState(ctx);
-  CGRect frame = self.bounds;
+- (void)drawRect:(CGRect)rect {
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSaveGState(ctx);
+    CGRect frame = self.bounds;
 #elif TARGET_OS_MAC
-  - (void)drawRect:(NSRect)dirtyRect
-  {
+- (void)drawRect:(NSRect)dirtyRect {
     [[NSGraphicsContext currentContext] saveGraphicsState];
     NSGraphicsContext * nsGraphicsContext = [NSGraphicsContext currentContext];
     CGContextRef ctx = (CGContextRef) [nsGraphicsContext graphicsPort];
@@ -213,41 +218,45 @@
     NSRectFill(frame);
     [(NSColor*)self.color set];
 #endif
-    
     if(_sampleLength > 0) {
+        _sampleData[_sampleLength-1] = CGPointMake(_sampleLength-1,0.0f);
       
-      _sampleData[_sampleLength-1] = CGPointMake(_sampleLength-1,0.0f);
+        CGMutablePathRef halfPath = CGPathCreateMutable();
+        CGPathAddLines(halfPath,
+                       NULL,
+                       _sampleData,
+                       _sampleLength);
+        CGMutablePathRef path = CGPathCreateMutable();
       
-      CGMutablePathRef halfPath = CGPathCreateMutable();
-      CGPathAddLines(halfPath,
-                     NULL,
-                     _sampleData,
-                     _sampleLength);
-      CGMutablePathRef path = CGPathCreateMutable();
+        double xscale = (frame.size.width) / (float)_sampleLength;
+        
+        double halfHeight ;
+        if (_shouldDrawFromMiddle || _plotType == EZPlotTypeBuffer) {
+            halfHeight = floor( frame.size.height / 2.0);
+        } else {
+            halfHeight = floor( frame.size.height);
+        }
       
-      double xscale = (frame.size.width) / (float)_sampleLength;
-      double halfHeight = floor( frame.size.height / 2.0 );
-      
-      // iOS drawing origin is flipped by default so make sure we account for that
-      int deviceOriginFlipped = 1;
+        // iOS drawing origin is flipped by default so make sure we account for that
+        int deviceOriginFlipped = 1;
 #if TARGET_OS_IPHONE
-      deviceOriginFlipped = -1;
+        deviceOriginFlipped = -1;
 #elif TARGET_OS_MAC
-      deviceOriginFlipped = 1;
+        deviceOriginFlipped = 1;
 #endif
       
-      CGAffineTransform xf = CGAffineTransformIdentity;
-      xf = CGAffineTransformTranslate( xf, frame.origin.x , halfHeight + frame.origin.y );
-      xf = CGAffineTransformScale( xf, xscale, deviceOriginFlipped*halfHeight );
-      CGPathAddPath( path, &xf, halfPath );
-      
-      if( self.shouldMirror ){
-        xf = CGAffineTransformIdentity;
-        xf = CGAffineTransformTranslate( xf, frame.origin.x , halfHeight + frame.origin.y);
-        xf = CGAffineTransformScale( xf, xscale, -deviceOriginFlipped*(halfHeight));
-        CGPathAddPath( path, &xf, halfPath );
-      }
-      CGPathRelease( halfPath );
+        CGAffineTransform xf = CGAffineTransformIdentity;
+        xf = CGAffineTransformTranslate( xf, frame.origin.x , halfHeight + frame.origin.y );
+        xf = CGAffineTransformScale( xf, xscale, deviceOriginFlipped*halfHeight );
+        CGPathAddPath(path, &xf, halfPath);
+
+        if( self.shouldMirror ){
+            xf = CGAffineTransformIdentity;
+            xf = CGAffineTransformTranslate( xf, frame.origin.x , halfHeight + frame.origin.y);
+            xf = CGAffineTransformScale( xf, xscale, -deviceOriginFlipped*(halfHeight));
+            CGPathAddPath(path, &xf, halfPath);
+        }
+        CGPathRelease(halfPath);
       
       // Now, path contains the full waveform path.
       CGContextAddPath(ctx, path);

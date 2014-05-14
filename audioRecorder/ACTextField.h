@@ -28,8 +28,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ACTextField : UITextField
+enum {
+    ACTextFieldType = 1,
+    ACDateFieldType,
+    ACPickerFieldType
+};
+typedef NSUInteger ACFieldType;
 
+@interface ACTextField : UITextField <UIPickerViewDataSource, UIPickerViewDelegate> {
+    UIPickerView *_pickerView;
+}
+
+@property (nonatomic) ACFieldType type;
+@property (nonatomic) int pickerIndex;
+@property (nonatomic, strong) NSArray* pickerData;
 @property (nonatomic, strong, readonly) UILabel * floatingLabel;
 @property (nonatomic, strong) NSNumber * floatingLabelYPadding UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIFont * floatingLabelFont UI_APPEARANCE_SELECTOR;

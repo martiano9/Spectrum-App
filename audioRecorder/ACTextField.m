@@ -243,4 +243,43 @@
     return accessibilityLabel;
 }
 
+
+#pragma mark - Getters and Setters
+
+- (void)setPickerData:(NSArray *)pickerData {
+    _pickerData = pickerData;
+    
+    _pickerView = [[UIPickerView alloc] init];
+    _pickerView.dataSource = self;
+    _pickerView.delegate = self;
+    
+    [self setInputView:_pickerView];
+}
+
+- (void)setPickerIndex:(int)pickerIndex {
+    _pickerIndex = pickerIndex;
+    [_pickerView selectRow:pickerIndex inComponent:0 animated:NO];
+    [_pickerView reloadComponent:0];
+    self.text = [_pickerData objectAtIndex:pickerIndex];
+}
+
+#pragma mark - UIPicker Delegate
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [_pickerData count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    return [_pickerData objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.pickerIndex = row;
+    self.text = [_pickerData objectAtIndex:row];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
 @end

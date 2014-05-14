@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="dKt-Yb-Sw0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="dKt-Yb-Sw0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -24,10 +24,6 @@
         <scene sceneID="mDm-1h-ABM">
             <objects>
                 <viewController id="S1n-R8-rnO" customClass="MainViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7Et-zI-NZN"/>
-                        <viewControllerLayoutGuide type="bottom" id="Yjm-8u-9xi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RVa-ur-C2P">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,14 +68,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cumulative Graph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRi-Ub-JTd">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cumulative Graph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tRi-Ub-JTd">
                                                     <rect key="frame" x="58" y="11" width="213" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="graph.png" translatesAutoresizingMaskIntoConstraints="NO" id="M5m-MC-wtI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="graph.png" id="M5m-MC-wtI">
                                                     <rect key="frame" x="20" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -94,14 +90,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High-Pass Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkM-tQ-YEt">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High-Pass Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vkM-tQ-YEt">
                                                     <rect key="frame" x="58" y="11" width="153" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hipass.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nkd-vW-9Ca">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hipass.png" id="Nkd-vW-9Ca">
                                                     <rect key="frame" x="20" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -116,14 +112,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Band-Pass Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adL-Ca-zSN">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Band-Pass Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="adL-Ca-zSN">
                                                     <rect key="frame" x="58" y="11" width="148" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bandpass.png" translatesAutoresizingMaskIntoConstraints="NO" id="VJE-Yk-smj">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bandpass.png" id="VJE-Yk-smj">
                                                     <rect key="frame" x="20" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -141,14 +137,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Low-Pass Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhv-Rc-8m2">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low-Pass Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vhv-Rc-8m2">
                                                     <rect key="frame" x="58" y="11" width="150" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lowpass.png" translatesAutoresizingMaskIntoConstraints="NO" id="zsV-NQ-Jnh">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lowpass.png" id="zsV-NQ-Jnh">
                                                     <rect key="frame" x="20" y="7" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -195,15 +191,11 @@
         <scene sceneID="cx3-9J-3ae">
             <objects>
                 <viewController id="OXq-Ab-YPq" customClass="GraphViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IYW-Cj-a9B"/>
-                        <viewControllerLayoutGuide type="bottom" id="sSh-IK-QAT"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qyh-Df-8zU">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDr-kt-xOY" customClass="AMGraphView">
+                            <view contentMode="scaleToFill" id="rDr-kt-xOY" customClass="AMGraphView">
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -240,28 +232,17 @@
         <scene sceneID="Kfg-at-3of">
             <objects>
                 <viewController id="pff-6p-QWJ" customClass="HighPassViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ImX-dI-RSN"/>
-                        <viewControllerLayoutGuide type="bottom" id="rpD-lC-gX6"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vAa-mE-Gy7">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Graph Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pww-Hy-AkE">
-                                <rect key="frame" x="14" y="166" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.9803922176361084" green="0.9803922176361084" blue="0.9803922176361084" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VGX-g5-fIG" customClass="AMGraphView">
+                            <view contentMode="scaleToFill" id="VGX-g5-fIG" customClass="EZAudioPlot">
                                 <rect key="frame" x="308" y="75" width="249" height="225"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HYt-am-9pk">
-                                <rect key="frame" x="175" y="185" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="HYt-am-9pk">
+                                <rect key="frame" x="140" y="214" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="thumbTintColor" red="0.10588236153125763" green="0.69019609689712524" blue="0.57254904508590698" alpha="1" colorSpace="deviceRGB"/>
@@ -269,78 +250,102 @@
                                     <action selector="RBGChanged:" destination="pff-6p-QWJ" eventType="valueChanged" id="gUp-s0-HWh"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1W6-Wt-RiG">
-                                <rect key="frame" x="175" y="226" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="1W6-Wt-RiG">
+                                <rect key="frame" x="140" y="239" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="pff-6p-QWJ" eventType="valueChanged" id="hjy-GG-UPn"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Oth-22-AwR">
-                                <rect key="frame" x="175" y="267" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="Oth-22-AwR">
+                                <rect key="frame" x="140" y="264" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="pff-6p-QWJ" eventType="valueChanged" id="23w-mb-BCU"/>
                                 </connections>
                             </slider>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rC3-oJ-0v5">
-                                <rect key="frame" x="37" y="195" width="96" height="96"/>
+                            <view contentMode="scaleToFill" id="rC3-oJ-0v5">
+                                <rect key="frame" x="27" y="210" width="71" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYU-HV-9QK">
-                                <rect key="frame" x="155" y="191" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KYU-HV-9QK">
+                                <rect key="frame" x="120" y="210" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMY-sj-nqG">
-                                <rect key="frame" x="155" y="232" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gMY-sj-nqG">
+                                <rect key="frame" x="120" y="235" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="G" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yip-gF-1d1">
-                                <rect key="frame" x="155" y="273" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yip-gF-1d1">
+                                <rect key="frame" x="120" y="260" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-Lc-f7U">
-                                <rect key="frame" x="557" y="75" width="20" height="225"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.24313727020000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                            <view contentMode="scaleToFill" id="MxE-Iz-g2M" userLabel="Border">
+                                <rect key="frame" x="17" y="296" width="275" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gwb-AE-EzZ" customClass="ACScrollView">
-                                <rect key="frame" x="12" y="64" width="288" height="102"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Gwb-AE-EzZ" customClass="ACScrollView">
+                                <rect key="frame" x="12" y="64" width="288" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Cut-off Frequency" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="G9e-h4-2lz" customClass="ACTextField">
-                                        <rect key="frame" x="16" y="11" width="263" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Butterworth Filter Order" placeholder="Butterworth Filter Order" minimumFontSize="17" id="iNH-cp-y1X" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="5" width="265" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="M7N-N2-tY2" userLabel="Border">
+                                        <rect key="frame" x="5" y="40" width="275" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Cut-off Frequency" placeholder="Cut-off Frequency" minimumFontSize="17" id="G9e-h4-2lz" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="45" width="263" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457618713379" green="0.89803928136825562" blue="0.91764712333679199" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tyO-nk-iO3" userLabel="Border">
-                                        <rect key="frame" x="4" y="46" width="275" height="1"/>
+                                    <view contentMode="scaleToFill" id="tyO-nk-iO3" userLabel="Border">
+                                        <rect key="frame" x="5" y="80" width="275" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Noise Floor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S7H-za-s5H" customClass="ACTextField">
-                                        <rect key="frame" x="14" y="55" width="265" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Gain" placeholder="Gain" minimumFontSize="17" id="S7H-za-s5H" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="85" width="125" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WD3-zo-8bl" userLabel="Border">
-                                        <rect key="frame" x="4" y="91" width="275" height="1"/>
+                                    <view contentMode="scaleToFill" id="ygq-vs-Tog" userLabel="Border">
+                                        <rect key="frame" x="141" y="87" width="1" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wave Type" placeholder="Wave Type" minimumFontSize="17" id="ydh-Ji-dhM" customClass="ACTextField">
+                                        <rect key="frame" x="150" y="85" width="130" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="WD3-zo-8bl" userLabel="Border">
+                                        <rect key="frame" x="5" y="120" width="275" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -358,8 +363,10 @@
                         <outlet property="RSlider" destination="HYt-am-9pk" id="JSe-l1-rZC"/>
                         <outlet property="colorView" destination="rC3-oJ-0v5" id="Taa-Ka-0tW"/>
                         <outlet property="cutOffTextField" destination="G9e-h4-2lz" id="0uD-OU-abt"/>
+                        <outlet property="filterOrderTextField" destination="iNH-cp-y1X" id="dQ7-Ci-CQy"/>
                         <outlet property="noiseFloorTextField" destination="S7H-za-s5H" id="KXf-dX-fb2"/>
                         <outlet property="scoller" destination="Gwb-AE-EzZ" id="sIP-oq-iYt"/>
+                        <outlet property="waveTypeTextField" destination="ydh-Ji-dhM" id="aBc-5g-egn"/>
                         <outlet property="waveView" destination="VGX-g5-fIG" id="094-ie-0mE"/>
                     </connections>
                 </viewController>
@@ -386,118 +393,138 @@
         <scene sceneID="ZBd-NZ-Bue">
             <objects>
                 <viewController id="Si4-JV-DZg" customClass="BandPassViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="u8X-Ft-NWS"/>
-                        <viewControllerLayoutGuide type="bottom" id="QO7-wU-F5p"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="aE6-oo-Jmv">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DbD-0Z-oxZ" customClass="AMGraphView">
+                            <view contentMode="scaleToFill" id="DbD-0Z-oxZ" customClass="EZAudioPlot">
                                 <rect key="frame" x="308" y="75" width="249" height="225"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WWZ-Ss-a9a">
-                                <rect key="frame" x="175" y="185" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="WWZ-Ss-a9a">
+                                <rect key="frame" x="140" y="214" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="Si4-JV-DZg" eventType="valueChanged" id="YeM-7T-WRP"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="1N9-ZP-wI9">
-                                <rect key="frame" x="175" y="226" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="1N9-ZP-wI9">
+                                <rect key="frame" x="140" y="239" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="Si4-JV-DZg" eventType="valueChanged" id="p1g-NI-HJ0"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TkP-Vu-Plv">
-                                <rect key="frame" x="175" y="267" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="TkP-Vu-Plv">
+                                <rect key="frame" x="140" y="264" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="Si4-JV-DZg" eventType="valueChanged" id="nLH-Sa-8pF"/>
                                 </connections>
                             </slider>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0f-vz-dbR">
-                                <rect key="frame" x="37" y="195" width="96" height="96"/>
+                            <view contentMode="scaleToFill" id="b0f-vz-dbR">
+                                <rect key="frame" x="27" y="210" width="71" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-Qc-bVC">
-                                <rect key="frame" x="155" y="191" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DC3-Qc-bVC">
+                                <rect key="frame" x="120" y="210" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDb-wS-Rjw">
-                                <rect key="frame" x="155" y="232" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IDb-wS-Rjw">
+                                <rect key="frame" x="120" y="235" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="G" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkL-ZS-DZ9">
-                                <rect key="frame" x="155" y="273" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AkL-ZS-DZ9">
+                                <rect key="frame" x="120" y="260" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="es4-jv-l6U">
-                                <rect key="frame" x="557" y="75" width="20" height="225"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.24313727020000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  " placeholder="Graph Color" minimumFontSize="17" id="cT5-BE-2D3" customClass="ACTextField">
+                                <rect key="frame" x="27" y="188" width="130" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <view contentMode="scaleToFill" id="QlE-N9-Weq" userLabel="Border">
+                                <rect key="frame" x="17" y="296" width="275" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Graph Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqq-ZK-EPs">
-                                <rect key="frame" x="14" y="166" width="143" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.98039221759999995" green="0.98039221759999995" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CiN-am-yoB" customClass="ACScrollView">
-                                <rect key="frame" x="12" y="64" width="290" height="102"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="CiN-am-yoB" customClass="ACScrollView">
+                                <rect key="frame" x="12" y="64" width="288" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Cut-off" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J3U-n8-Zkc" customClass="ACTextField">
-                                        <rect key="frame" x="16" y="11" width="121" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Butterworth Filter Order" placeholder="Butterworth Filter Order" minimumFontSize="17" id="OxO-Ce-9Se" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="5" width="265" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UDO-CJ-FrW" userLabel="Border">
-                                        <rect key="frame" x="141" y="11" width="1" height="30"/>
+                                    <view contentMode="scaleToFill" id="Qdo-js-W6S" userLabel="Border">
+                                        <rect key="frame" x="5" y="40" width="275" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Bandwitdth" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R73-g4-pSs" customClass="ACTextField">
-                                        <rect key="frame" x="150" y="11" width="129" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Cut-off Frequency" placeholder="Cut-off" minimumFontSize="17" id="J3U-n8-Zkc" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="45" width="125" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TQC-9h-pRL" userLabel="Border">
-                                        <rect key="frame" x="4" y="46" width="275" height="1"/>
+                                    <view contentMode="scaleToFill" id="UDO-CJ-FrW" userLabel="Border">
+                                        <rect key="frame" x="141" y="47" width="1" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Noise Floor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKj-KV-rKy" customClass="ACTextField">
-                                        <rect key="frame" x="14" y="55" width="265" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bandwidth" placeholder="Bandwitdth" minimumFontSize="17" id="R73-g4-pSs" customClass="ACTextField">
+                                        <rect key="frame" x="150" y="45" width="130" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GNc-fo-3zd" userLabel="Border">
-                                        <rect key="frame" x="4" y="91" width="275" height="1"/>
+                                    <view contentMode="scaleToFill" id="TQC-9h-pRL" userLabel="Border">
+                                        <rect key="frame" x="4" y="80" width="275" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Gain" placeholder="Gain" minimumFontSize="17" id="JKj-KV-rKy" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="85" width="125" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="pIR-jY-Wcv" userLabel="Border">
+                                        <rect key="frame" x="141" y="87" width="1" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wave Type" placeholder="Wave Type" minimumFontSize="17" id="aPF-o9-Od7" customClass="ACTextField">
+                                        <rect key="frame" x="150" y="85" width="130" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="GNc-fo-3zd" userLabel="Border">
+                                        <rect key="frame" x="5" y="120" width="275" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -515,8 +542,10 @@
                         <outlet property="bandwidthTextField" destination="R73-g4-pSs" id="dC0-Vx-ZDf"/>
                         <outlet property="colorView" destination="b0f-vz-dbR" id="58X-Hh-9Xk"/>
                         <outlet property="cutOffTextField" destination="J3U-n8-Zkc" id="Jbs-XJ-A8w"/>
+                        <outlet property="filterOrderTextField" destination="OxO-Ce-9Se" id="L2o-XN-Jn0"/>
                         <outlet property="noiseFloorTextField" destination="JKj-KV-rKy" id="d6I-wA-J9m"/>
                         <outlet property="scoller" destination="CiN-am-yoB" id="olg-0g-IMy"/>
+                        <outlet property="waveTypeTextField" destination="aPF-o9-Od7" id="h50-sA-HYj"/>
                         <outlet property="waveView" destination="DbD-0Z-oxZ" id="nro-aO-eQo"/>
                     </connections>
                 </viewController>
@@ -543,106 +572,126 @@
         <scene sceneID="dwI-9L-uhm">
             <objects>
                 <viewController id="eXg-VB-AJs" customClass="LowPassViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Tss-ft-t1l"/>
-                        <viewControllerLayoutGuide type="bottom" id="pHq-yO-5Rd"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="D4J-Xf-5hf">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Car-v9-QaJ" customClass="AMGraphView">
+                            <view contentMode="scaleToFill" id="Car-v9-QaJ" customClass="EZAudioPlot">
                                 <rect key="frame" x="308" y="75" width="249" height="225"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZcM-wN-Wag">
-                                <rect key="frame" x="175" y="185" width="118" height="34"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="ZcM-wN-Wag">
+                                <rect key="frame" x="140" y="214" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="eXg-VB-AJs" eventType="valueChanged" id="rCo-69-ckv"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tOe-vt-fAd">
-                                <rect key="frame" x="175" y="226" width="118" height="34"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="tOe-vt-fAd">
+                                <rect key="frame" x="140" y="239" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="eXg-VB-AJs" eventType="valueChanged" id="ESj-LM-Go8"/>
                                 </connections>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BjU-Gt-kgc">
-                                <rect key="frame" x="175" y="267" width="118" height="34"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="BjU-Gt-kgc">
+                                <rect key="frame" x="140" y="264" width="144" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="RBGChanged:" destination="eXg-VB-AJs" eventType="valueChanged" id="WbA-qO-00O"/>
                                 </connections>
                             </slider>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mcj-Wv-3jc">
-                                <rect key="frame" x="37" y="195" width="96" height="96"/>
+                            <view contentMode="scaleToFill" id="mcj-Wv-3jc">
+                                <rect key="frame" x="27" y="210" width="71" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="R" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp1-HR-C2t">
-                                <rect key="frame" x="155" y="191" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Sp1-HR-C2t">
+                                <rect key="frame" x="120" y="210" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft9-FB-E0S">
-                                <rect key="frame" x="155" y="232" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ft9-FB-E0S">
+                                <rect key="frame" x="120" y="235" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="G" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gI-Wx-9nS">
-                                <rect key="frame" x="155" y="273" width="14" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="G" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9gI-Wx-9nS">
+                                <rect key="frame" x="120" y="260" width="14" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Graph Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUx-vD-lEE">
-                                <rect key="frame" x="20" y="166" width="143" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  " placeholder="Graph Color" minimumFontSize="17" id="tbo-jr-ix4" customClass="ACTextField">
+                                <rect key="frame" x="27" y="188" width="130" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.98039221759999995" green="0.98039221759999995" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-Ig-9yh">
-                                <rect key="frame" x="557" y="75" width="20" height="225"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="0.16862745579999999" green="0.24313727020000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <view contentMode="scaleToFill" id="ND6-bX-pkE" userLabel="Border">
+                                <rect key="frame" x="17" y="296" width="275" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTL-im-eUK" customClass="ACScrollView">
-                                <rect key="frame" x="12" y="64" width="288" height="102"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="LTL-im-eUK" customClass="ACScrollView">
+                                <rect key="frame" x="12" y="64" width="288" height="129"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Cut-off Frequency" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wTX-GF-8OE" customClass="ACTextField">
-                                        <rect key="frame" x="16" y="11" width="263" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Butterworth Filter Order" placeholder="Butterworth Filter Order" minimumFontSize="17" id="26V-PH-WgA" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="5" width="265" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rDV-oO-1FJ" userLabel="Border">
-                                        <rect key="frame" x="4" y="46" width="275" height="1"/>
+                                    <view contentMode="scaleToFill" id="Gig-tx-yZ8" userLabel="Border">
+                                        <rect key="frame" x="5" y="40" width="275" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="900" placeholder="Noise Floor" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFT-Gn-hOj" customClass="ACTextField">
-                                        <rect key="frame" x="14" y="55" width="265" height="35"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Cut-off Frequency" placeholder="Cut-off Frequency" minimumFontSize="17" id="wTX-GF-8OE" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="45" width="263" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wvd-E5-cvK" userLabel="Border">
-                                        <rect key="frame" x="4" y="91" width="275" height="1"/>
+                                    <view contentMode="scaleToFill" id="rDV-oO-1FJ" userLabel="Border">
+                                        <rect key="frame" x="5" y="80" width="275" height="1"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Gain" placeholder="Gain" minimumFontSize="17" id="iFT-Gn-hOj" customClass="ACTextField">
+                                        <rect key="frame" x="15" y="85" width="125" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="YPV-c9-WUG" userLabel="Border">
+                                        <rect key="frame" x="141" y="87" width="1" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Wave Type" placeholder="Wave Type" minimumFontSize="17" id="NOv-NF-VRD" customClass="ACTextField">
+                                        <rect key="frame" x="150" y="85" width="130" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.88627457620000005" green="0.8980392814" blue="0.91764712329999998" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" id="wvd-E5-cvK" userLabel="Border">
+                                        <rect key="frame" x="5" y="120" width="275" height="1"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.10588236149999999" green="0.69019609689999994" blue="0.57254904510000004" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -659,8 +708,10 @@
                         <outlet property="RSlider" destination="ZcM-wN-Wag" id="dJ4-X1-0KT"/>
                         <outlet property="colorView" destination="mcj-Wv-3jc" id="CSE-eF-non"/>
                         <outlet property="cutOffTextField" destination="wTX-GF-8OE" id="zyH-iN-ooW"/>
+                        <outlet property="filterOrderTextField" destination="26V-PH-WgA" id="huC-pc-Rgh"/>
                         <outlet property="noiseFloorTextField" destination="iFT-Gn-hOj" id="jHt-2B-ZFx"/>
                         <outlet property="scoller" destination="LTL-im-eUK" id="UA6-FF-xHY"/>
+                        <outlet property="waveTypeTextField" destination="NOv-NF-VRD" id="1C7-nB-BNE"/>
                         <outlet property="waveView" destination="Car-v9-QaJ" id="mcx-kp-SHF"/>
                     </connections>
                 </viewController>

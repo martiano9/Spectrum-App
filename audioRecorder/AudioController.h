@@ -11,6 +11,7 @@
 
 #import "EZAudio.h"
 
+@protocol AudioControllerDelegate;
 
 @interface AudioController : NSObject <EZMicrophoneDelegate>
 
@@ -18,24 +19,39 @@
 @property float lpf;
 @property float hpf;
 @property float bpf;
-@property (nonatomic)UIColor *lpGraphColor;
-@property (nonatomic)UIColor *hpGraphColor;
-@property (nonatomic)UIColor *bpGraphColor;
-@property (nonatomic)float lpfFreq1;
-@property (nonatomic)float hpfFreq1;
-@property (nonatomic)float bpfFreq1;
-@property (nonatomic)float bpfFreq2;
 
-@property (nonatomic)float hpNoiseFloor;
-@property (nonatomic)float bpNoiseFloor;
-@property (nonatomic)float lpNoiseFloor;
+@property (nonatomic)       float              highPassGain;
+@property (nonatomic)       float              highPassCutOff;
+@property (nonatomic)       float              highPassFilterOrder;
+@property (nonatomic)       UIColor            *highPassGraphColor;
+
+@property (nonatomic)       float              bandPassGain;
+@property (nonatomic)       float              bandPassCutOff;
+@property (nonatomic)       float              bandPassBandWidth;
+@property (nonatomic)       float              bandPassFilterOrder;
+@property (nonatomic)       UIColor            *bandPassGraphColor;
+
+@property (nonatomic)       float              lowPassGain;
+@property (nonatomic)       float              lowPassCutOff;
+@property (nonatomic)       float              lowPassFilterOrder;
+@property (nonatomic)       UIColor            *lowPassGraphColor;
 
 @property (nonatomic,strong) EZMicrophone *microphone;
+@property (nonatomic,assign) id<AudioControllerDelegate> delegate;
 
 // Singleton methods
 + (AudioController *) sharedInstance;
-- (void)saveLPGraphData:(UIColor*)color cutoffFreq:(float)cutoff;
+- (void)resetLowPassFilter;
+- (void)resetBandPassFilter;
+- (void)resetHighPassFilter;
 
-- (void)start;
+@end
+
+@protocol AudioControllerDelegate <NSObject>
+
+@optional
+- (void)lowPassDidFinish:(float*)data withBufferSize:(UInt32)bufferSize;
+- (void)bandPassDidFinish:(float*)data withBufferSize:(UInt32)bufferSize;
+- (void)highPassDidFinish:(float*)data withBufferSize:(UInt32)bufferSize;
 
 @end

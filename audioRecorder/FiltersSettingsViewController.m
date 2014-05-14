@@ -56,15 +56,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [self stopDrawing];
-    _audioController.hpGraphColor = [UIColor colorWithRed:RSliderHP.value green:GSliderHP.value blue:BSliderHP.value alpha:1];
-    _audioController.bpGraphColor = [UIColor colorWithRed:RSliderBP.value green:GSliderBP.value blue:BSliderBP.value alpha:1];
-    _audioController.lpGraphColor = [UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1];
+    _audioController.highPassGraphColor = [UIColor colorWithRed:RSliderHP.value green:GSliderHP.value blue:BSliderHP.value alpha:1];
+    _audioController.bandPassGraphColor = [UIColor colorWithRed:RSliderBP.value green:GSliderBP.value blue:BSliderBP.value alpha:1];
+    _audioController.lowPassGraphColor = [UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self startDrawing];
     // Display color view
-    [colorViewHP setBackgroundColor:_audioController.hpGraphColor];
+    [colorViewHP setBackgroundColor:_audioController.highPassGraphColor];
     
     // Set value for sliders
     CGFloat red = 0.0, green = 0.0, blue = 0.0, alpha =0.0;
@@ -74,12 +74,12 @@
     GSliderHP.value = green;
     
     // Set value for stepper
-    stepperHP.value = _audioController.hpfFreq1;
+    stepperHP.value = _audioController.highPassCutOff;
     cutOffLabelHP.text = [NSString stringWithFormat:@"%d",(int)stepperHP.value] ;
     
     // Band Pass
     // Display color view
-    [colorViewBP setBackgroundColor:_audioController.bpGraphColor];
+    [colorViewBP setBackgroundColor:_audioController.bandPassGraphColor];
     
     // Set value for sliders
     red = 0.0; green = 0.0; blue = 0.0; alpha =0.0;
@@ -88,16 +88,9 @@
     BSliderBP.value = blue;
     GSliderBP.value = green;
     
-    // Set value for stepper
-    stepperBP.value = _audioController.bpfFreq1;
-    cutOffLabelBP.text = [NSString stringWithFormat:@"%d",(int)stepperBP.value] ;
-    
-    BWStepperBP.value = _audioController.bpfFreq2;
-    BWLabelBP.text = [NSString stringWithFormat:@"%d",(int)BWStepperBP.value] ;
-    
     // Low Pass
     // Display color view
-    [colorView setBackgroundColor:_audioController.lpGraphColor];
+    [colorView setBackgroundColor:_audioController.lowPassGraphColor];
     
     // Set value for sliders
     red = 0.0; green = 0.0; blue = 0.0; alpha =0.0;
@@ -107,20 +100,20 @@
     GSlider.value = green;
     
     // Set value for stepper
-    stepper.value = _audioController.lpfFreq1;
+    stepper.value = _audioController.lowPassCutOff;
     cutOffLabel.text = [NSString stringWithFormat:@"%d",(int)stepper.value] ;
 
 }
 
 - (void)updateColorHP {
-    _audioController.hpGraphColor = [UIColor colorWithRed:RSliderHP.value green:GSliderHP.value blue:BSliderHP.value alpha:1];
+    _audioController.highPassGraphColor = [UIColor colorWithRed:RSliderHP.value green:GSliderHP.value blue:BSliderHP.value alpha:1];
 }
 
 - (void)updateColorBP {
-    _audioController.bpGraphColor = [UIColor colorWithRed:RSliderBP.value green:GSliderBP.value blue:BSliderBP.value alpha:1];
+    _audioController.bandPassGraphColor = [UIColor colorWithRed:RSliderBP.value green:GSliderBP.value blue:BSliderBP.value alpha:1];
 }
 - (void)updateColorLP {
-    _audioController.lpGraphColor = [UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1];
+    _audioController.lowPassGraphColor = [UIColor colorWithRed:RSlider.value green:GSlider.value blue:BSlider.value alpha:1];
 }
 
 #pragma Actions
@@ -135,27 +128,13 @@
     double value = [sender value];
     
     [cutOffLabelHP setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.hpfFreq1 = sender.value;
+    _audioController.highPassCutOff = sender.value;
 }
 
 - (IBAction)RBGChangedBP:(id)sender {
     [colorViewBP setBackgroundColor:[UIColor colorWithRed:RSliderBP.value green:GSliderBP.value blue:BSliderBP.value alpha:1]];
     [self updateColorBP];
     [waveViewBP setNeedUpdate];
-}
-
-- (IBAction)CutoffValueChangedBP:(UIStepper *)sender {
-    double value = [sender value];
-    
-    [cutOffLabelBP setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.bpfFreq1 = sender.value;
-}
-
-- (IBAction)BWValueChangedBP:(UIStepper *)sender {
-    double value = [sender value];
-    
-    [BWLabelBP setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.bpfFreq2 = sender.value;
 }
 
 - (IBAction)RBGChanged:(id)sender {
@@ -168,7 +147,7 @@
     double value = [sender value];
     
     [cutOffLabel setText:[NSString stringWithFormat:@"%d", (int)value]];
-    _audioController.lpfFreq1 = sender.value;
+    _audioController.lowPassCutOff = sender.value;
 }
 
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D703932B18CA25BE00C4F65B /* FiltersSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D703932A18CA25BE00C4F65B /* FiltersSettingsViewController.m */; };
+		D76F62BE1922F61A00C88F64 /* UIImage+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = D76F62BD1922F61A00C88F64 /* UIImage+Expanded.m */; };
 		D79B073918FDFD710071C917 /* Bessel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79B072818FDFD710071C917 /* Bessel.cpp */; };
 		D79B073A18FDFD710071C917 /* Biquad.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79B072918FDFD710071C917 /* Biquad.cpp */; };
 		D79B073B18FDFD710071C917 /* Butterworth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D79B072A18FDFD710071C917 /* Butterworth.cpp */; };
@@ -91,6 +92,8 @@
 /* Begin PBXFileReference section */
 		D703932918CA25BE00C4F65B /* FiltersSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersSettingsViewController.h; sourceTree = "<group>"; };
 		D703932A18CA25BE00C4F65B /* FiltersSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersSettingsViewController.m; sourceTree = "<group>"; };
+		D76F62BC1922F61A00C88F64 /* UIImage+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Expanded.h"; sourceTree = "<group>"; };
+		D76F62BD1922F61A00C88F64 /* UIImage+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Expanded.m"; sourceTree = "<group>"; };
 		D79B071018FDFD710071C917 /* Bessel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bessel.h; sourceTree = "<group>"; };
 		D79B071118FDFD710071C917 /* Biquad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Biquad.h; sourceTree = "<group>"; };
 		D79B071218FDFD710071C917 /* Butterworth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Butterworth.h; sourceTree = "<group>"; };
@@ -386,6 +389,8 @@
 			children = (
 				E2789B6118BF1AAC004CA810 /* UIColor+Expanded.h */,
 				E2789B6218BF1AAC004CA810 /* UIColor+Expanded.m */,
+				D76F62BC1922F61A00C88F64 /* UIImage+Expanded.h */,
+				D76F62BD1922F61A00C88F64 /* UIImage+Expanded.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				E2ACDD6218BDFAEE0097CAE1 /* LeftViewController.m in Sources */,
 				D7A99C6C18FB8CB8004106FA /* EZAudioPlotGLKViewController.m in Sources */,
 				D79B073D18FDFD710071C917 /* ChebyshevI.cpp in Sources */,
+				D76F62BE1922F61A00C88F64 /* UIImage+Expanded.m in Sources */,
 				D7A99C6B18FB8CB8004106FA /* EZAudioPlotGL.m in Sources */,
 				D7A99C6E18FB8CB8004106FA /* EZOutput.m in Sources */,
 				E2CE697018BDD33800B05ABE /* UIViewController+AMSlideMenu.m in Sources */,

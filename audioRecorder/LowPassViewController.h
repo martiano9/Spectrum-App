@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class AMGraphView;
+@class EZAudioPlot;
 @class ACTextField;
 @class ACScrollView;
 
 @interface LowPassViewController : UIViewController {
-    IBOutlet AMGraphView* waveView;
+    IBOutlet EZAudioPlot* waveView;
+    
     IBOutlet UIView *colorView;
     IBOutlet UISlider *RSlider;
     IBOutlet UISlider *BSlider;
@@ -21,6 +22,8 @@
     
     IBOutlet ACTextField *cutOffTextField;
     IBOutlet ACTextField *noiseFloorTextField;
+    IBOutlet ACTextField *filterOrderTextField;
+    IBOutlet ACTextField *waveTypeTextField;
     IBOutlet ACScrollView *scoller;
 }
 

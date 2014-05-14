@@ -91,6 +91,10 @@ typedef NS_ENUM(NSInteger,EZPlotType){
  */
 @property (nonatomic,assign,setter=setShouldMirror:) BOOL shouldMirror;
 
+/**
+ A boolean indicating whether the graph should be draw from middle of graph height or bottom of graph */
+@property (nonatomic,assign,setter=setShouldDrawFromMiddle:) BOOL shouldDrawFromMiddle;
+
 #pragma mark - Clearing
 ///-----------------------------------------------------------
 /// @name Clearing The Plot

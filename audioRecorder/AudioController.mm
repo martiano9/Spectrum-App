@@ -27,7 +27,9 @@ static AudioController *sharedInstance = nil;
     SimpleFilter<Butterworth::BandPass<10>,1> bandpass;
     SimpleFilter<Butterworth::HighPass<10>,1> highpass;
     
-    float *tempData;
+    float *tempDataLP;
+    float *tempDataBP;
+    float *tempDataHP;
 }
 
 @end
@@ -38,16 +40,22 @@ static AudioController *sharedInstance = nil;
 @synthesize lpf;
 @synthesize hpf;
 @synthesize bpf;
-@synthesize lpGraphColor = _lpGraphColor;
-@synthesize hpGraphColor = _hpGraphColor;
-@synthesize bpGraphColor = _bpGraphColor;
-@synthesize lpfFreq1 = _lpfFreq1;
-@synthesize hpfFreq1 = _hpfFreq1;
-@synthesize bpfFreq1 = _bpfFreq1;
-@synthesize bpfFreq2 = _bpfFreq2;
-@synthesize hpNoiseFloor = _hpNoiseFloor;
-@synthesize bpNoiseFloor = _bpNoiseFloor;
-@synthesize lpNoiseFloor = _lpNoiseFloor;
+
+@synthesize highPassGain            = _highPassGain;
+@synthesize highPassCutOff          = _highPassCutOff;
+@synthesize highPassFilterOrder     = _highPassFilterOrder;
+@synthesize highPassGraphColor      = _highPassGraphColor;
+
+@synthesize bandPassGain            = _bandPassGain;
+@synthesize bandPassBandWidth       = _bandPassBandWidth;
+@synthesize bandPassCutOff          = _bandPassCutOff;
+@synthesize bandPassFilterOrder     = _bandPassFilterOrder;
+@synthesize bandPassGraphColor      = _bandPassGraphColor;
+
+@synthesize lowPassGain             = _lowPassGain;
+@synthesize lowPassCutOff           = _lowPassCutOff;
+@synthesize lowPassFilterOrder      = _lowPassFilterOrder;
+@synthesize lowPassGraphColor       = _lowPassGraphColor;
 
 #pragma mark - Singleton
 
@@ -78,214 +86,212 @@ static AudioController *sharedInstance = nil;
     self = [super init];
     if (self) {
         
+        if (self.highPassFilterOrder    == 0.0) self.highPassFilterOrder = dFilterOrder;
+        if (self.highPassCutOff         == 0.0) self.highPassCutOff = dHighPassCutOff;
+        if (self.highPassGain           == 0.0) self.highPassGain = noiseFloorDefaultValue;
+        if (self.highPassGraphColor     == nil)
+            self.highPassGraphColor = [UIColor colorWithRed:0.99 green:0.96 blue:0 alpha:1];
+        [self resetHighPassFilter];
+        
+        if (self.bandPassFilterOrder    == 0.0) self.bandPassFilterOrder = dFilterOrder;
+        if (self.bandPassBandWidth      == 0.0) self.bandPassBandWidth = dBandPassBandWidth;
+        if (self.bandPassCutOff         == 0.0) self.bandPassCutOff = dBandPassCutOff;
+        if (self.bandPassGain           == 0.0) self.bandPassGain = noiseFloorDefaultValue;
+        if (self.bandPassGraphColor     == nil)
+            self.bandPassGraphColor = [UIColor colorWithRed:1.0 green:0.5 blue:0 alpha:0.8];
+        [self resetBandPassFilter];
+        
+        if (self.lowPassFilterOrder     == 0.0) self.lowPassFilterOrder = dFilterOrder;
+        if (self.lowPassCutOff          == 0.0) self.lowPassCutOff = dLowPassCutOff;
+        if (self.lowPassGain            == 0.0) self.lowPassGain = noiseFloorDefaultValue;
+        if (self.lowPassGraphColor      == nil)
+            self.lowPassGraphColor = [UIColor colorWithRed:0.27 green:0.58 blue:0.84 alpha:1];
+        [self resetLowPassFilter];
+        
+        tempDataLP = new float[512];
+        tempDataBP = new float[512];
+        tempDataHP = new float[512];
+        
         self.microphone = [EZMicrophone microphoneWithDelegate:self];
         [self.microphone startFetchingAudio];
-        
-        if (self.lpfFreq1 == 0.0) self.lpfFreq1 = 100;
-        lowpass.setup(4, 44100, self.lpfFreq1);
-        
-        if (self.hpfFreq1 == 0.0) self.hpfFreq1 = 100;
-        highpass.setup(4, 44100, self.hpfFreq1);
-        
-        if (self.bpfFreq1 == 0.0) self.bpfFreq1 = 1000;
-        if (self.bpfFreq2 == 0.0) self.bpfFreq2 = 100;
-        bandpass.setup(4, 44100, self.bpfFreq1, self.bpfFreq2);
-        
-        tempData = new float[512];
-        
     }
     return self;
 }
 
-- (void)start {
-    
-}
-
-- (void)saveLPGraphData:(UIColor*)color cutoffFreq:(float)cutoff {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    [defaults setObject:color forKey:@"ZColor"];
-    
-    [defaults synchronize];
-}
-
 #pragma mark - Override Getters Setters
-
-- (void)setLpGraphColor:(UIColor *)lpGraphColor {
-    _lpGraphColor = lpGraphColor;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:_lpGraphColor];
-    [defaults setObject:colorData forKey:lpfGraphColorKey];
-    [defaults synchronize];
+//
+// High-pass Filter
+//
+- (void)setHighPassGain:(float)highPassGain {
+    _highPassGain = highPassGain;
+    [self saveFloat:highPassGain forKey:kHighPassGain];
 }
 
-- (UIColor *)lpGraphColor {
-    if (_lpGraphColor == nil) {
-        // Load xcolor
-        NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:lpfGraphColorKey];
-        _lpGraphColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+- (float)highPassGain {
+    if (_highPassGain == 0.0) {
+        _highPassGain = [self floatForKey:kHighPassGain];
     }
-    
-    return _lpGraphColor;
+    return _highPassGain;
 }
 
-- (void)setHpGraphColor:(UIColor *)hpGraphColor {
-    _hpGraphColor = hpGraphColor;
+- (void)setHighPassCutOff:(float)highPassCutOff {
+    _highPassCutOff = highPassCutOff;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:_hpGraphColor];
-    [defaults setObject:colorData forKey:hpfGraphColorKey];
-    [defaults synchronize];
+    [self saveFloat:highPassCutOff forKey:kHighPassCutOff];
 }
 
-- (UIColor *)hpGraphColor {
-    if (_hpGraphColor == nil) {
-        // Load xcolor
-        NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:hpfGraphColorKey];
-        _hpGraphColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+- (float)highPassCutOff {
+    if (_highPassCutOff == 0.0) {
+        _highPassCutOff = [self floatForKey:kHighPassCutOff];
     }
-    
-    return _hpGraphColor;
+    return _highPassCutOff;
 }
 
-- (void)setBpGraphColor:(UIColor *)bpGraphColor {
-    _bpGraphColor = bpGraphColor;
+- (void)setHighPassFilterOrder:(float)highPassFilterOrder {
+    _highPassFilterOrder = highPassFilterOrder;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:_bpGraphColor];
-    [defaults setObject:colorData forKey:bpfGraphColorKey];
-    [defaults synchronize];
+    [self saveFloat:highPassFilterOrder forKey:kHighPassFilterOrder];
 }
 
-- (UIColor *)bpGraphColor {
-    if (_bpGraphColor == nil) {
-        // Load xcolor
-        NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:bpfGraphColorKey];
-        _bpGraphColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+- (float)highPassFilterOrder {
+    if (_highPassFilterOrder == 0.0) {
+        _highPassFilterOrder = [self floatForKey:kHighPassFilterOrder];
     }
-    
-    return _bpGraphColor;
+    return _highPassFilterOrder;
 }
 
-- (void)setLpfFreq1:(float)lpfCutoff {
-    _lpfFreq1 = lpfCutoff;
-
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_lpfFreq1] forKey:lpfCutoffKey];
-    [defaults synchronize];
+- (void)setHighPassGraphColor:(UIColor *)highPassGraphColor {
+    _highPassGraphColor = highPassGraphColor;
     
-    lowpass.setup(4, 44100, _lpfFreq1);
-    lowpass.reset();
+    [self saveColor:highPassGraphColor forKey:kHighPassGraphColor];
 }
 
-- (float)lpfFreq1 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _lpfFreq1 = [[defaults objectForKey:lpfCutoffKey]floatValue];//value=0
-    
-    return _lpfFreq1;
-}
-
-- (void)setHpfFreq1:(float)hpfCutoff {
-    _hpfFreq1 = hpfCutoff;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_hpfFreq1] forKey:hpfCutoffKey];
-    [defaults synchronize];
-    
-    highpass.setup(4, 44100, _hpfFreq1);
-    highpass.reset();
-}
-
-- (float)hpfFreq1 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _hpfFreq1 = [[defaults objectForKey:hpfCutoffKey]floatValue];//value=0
-    
-    return _hpfFreq1;
-}
-
-- (void)setBpfFreq1:(float)bpfCutoff {
-    _bpfFreq1 = bpfCutoff;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_bpfFreq1] forKey:bpfCutoffKey];
-    [defaults synchronize];
-    
-    bandpass.setup(4, 44100, _bpfFreq1, _bpfFreq2);
-    bandpass.reset();
-}
-
-- (float)bpfFreq1 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _bpfFreq1 = [[defaults objectForKey:bpfCutoffKey]floatValue];//value=0
-    
-    return _bpfFreq1;
-}
-
-- (void)setBpfFreq2:(float)bpfCutoff {
-    _bpfFreq2 = bpfCutoff;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_bpfFreq2] forKey:bpfBWKey];
-    [defaults synchronize];
-    
-    bandpass.setup(4, 44100, _bpfFreq1, _bpfFreq2);
-    bandpass.reset();
-}
-
-- (float)bpfFreq2 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _bpfFreq2 = [[defaults objectForKey:bpfBWKey]floatValue];//value=0
-    
-    return _bpfFreq2;
-}
-
-- (void)setHpNoiseFloor:(float)hpNoiseFloor {
-    _hpNoiseFloor = hpNoiseFloor;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_hpNoiseFloor] forKey:hpNoiseFloorKey];
-    [defaults synchronize];
-}
-
-- (float)hpNoiseFloor {
-    if (_hpNoiseFloor == 0) {
-        self.hpNoiseFloor = noiseFloorDefaultValue;
+- (UIColor *)highPassGraphColor {
+    if (_highPassGraphColor == nil) {
+        _highPassGraphColor = [self colorForKey:kHighPassGraphColor];
     }
-    return _hpNoiseFloor;
+    return _highPassGraphColor;
 }
 
-- (void)setBpNoiseFloor:(float)bpNoiseFloor {
-    _bpNoiseFloor = bpNoiseFloor;
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_bpNoiseFloor] forKey:bpNoiseFloorKey];
-    [defaults synchronize];
+//
+// Band-pass Filter
+//
+- (void)setBandPassGain:(float)bandPassGain {
+    _bandPassGain = bandPassGain;
+    [self saveFloat:bandPassGain forKey:kBandPassGain];
 }
 
-- (float)bpNoiseFloor {
-    if (_bpNoiseFloor == 0) {
-        self.bpNoiseFloor = noiseFloorDefaultValue;
+- (float)bandPassGain {
+    if (_bandPassGain == 0.0) {
+        _bandPassGain = [self floatForKey:kBandPassGain];
     }
-    return _bpNoiseFloor;
+    return _bandPassGain;
 }
 
-- (void)setLpNoiseFloor:(float)lpNoiseFloor {
-    _lpNoiseFloor = lpNoiseFloor;
+- (void)setBandPassCutOff:(float)bandPassCutOff {
+    _bandPassCutOff = bandPassCutOff;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:[NSNumber numberWithFloat:_lpNoiseFloor] forKey:bpNoiseFloorKey];
-    [defaults synchronize];
+    [self saveFloat:bandPassCutOff forKey:kBandPassCutOff];
 }
 
-- (float)lpNoiseFloor {
-    if (_lpNoiseFloor == 0) {
-        self.lpNoiseFloor = noiseFloorDefaultValue;
+- (float)bandPassCutOff {
+    if (_bandPassCutOff == 0.0) {
+        _bandPassCutOff = [self floatForKey:kBandPassCutOff];
     }
-    return _lpNoiseFloor;
+    return _bandPassCutOff;
+}
+
+- (void)setBandPassBandWidth:(float)bandPassBandWidth {
+    _bandPassBandWidth = bandPassBandWidth;
+    
+    [self saveFloat:bandPassBandWidth forKey:kBandPassBandWidth];
+}
+
+- (float)bandPassBandWidth {
+    if (_bandPassBandWidth == 0.0) {
+        _bandPassBandWidth = [self floatForKey:kBandPassBandWidth];
+    }
+    return _bandPassBandWidth;
+}
+
+- (void)setBandPassFilterOrder:(float)bandPassFilterOrder {
+    _bandPassFilterOrder = bandPassFilterOrder;
+    
+    [self saveFloat:bandPassFilterOrder forKey:kBandPassFilterOrder];
+}
+
+- (float)bandPassFilterOrder {
+    if (_bandPassFilterOrder == 0.0) {
+        _bandPassFilterOrder = [self floatForKey:kBandPassFilterOrder];
+    }
+    return _bandPassFilterOrder;
+}
+
+- (void)setBandPassGraphColor:(UIColor *)bandPassGraphColor {
+    _bandPassGraphColor = bandPassGraphColor;
+    
+    [self saveColor:bandPassGraphColor forKey:kBandPassGraphColor];
+}
+
+- (UIColor *)bandPassGraphColor {
+    if (_bandPassGraphColor == nil) {
+        _bandPassGraphColor = [self colorForKey:kBandPassGraphColor];
+    }
+    return _bandPassGraphColor;
+}
+
+//
+// Low-pass Filter
+//
+- (void)setLowPassGain:(float)lowPassGain {
+    _lowPassGain = lowPassGain;
+    [self saveFloat:lowPassGain forKey:kLowPassGain];
+}
+
+- (float)lowPassGain {
+    if (_lowPassGain == 0.0) {
+        _lowPassGain = [self floatForKey:kLowPassGain];
+    }
+    return _lowPassGain;
+}
+
+- (void)setLowPassCutOff:(float)lowPassCutOff {
+    _lowPassCutOff = lowPassCutOff;
+    
+    [self saveFloat:_lowPassCutOff forKey:kLowPassCutOff];
+}
+
+- (float)lowPassCutOff {
+    if (_lowPassCutOff == 0.0) {
+        _lowPassCutOff = [self floatForKey:kLowPassCutOff];
+    }
+    return _lowPassCutOff;
+}
+
+- (void)setLowPassFilterOrder:(float)lowPassFilterOrder {
+    _lowPassFilterOrder = lowPassFilterOrder;
+    
+    [self saveFloat:lowPassFilterOrder forKey:kLowPassFilterOrder];
+}
+
+- (float)lowPassFilterOrder {
+    if (_lowPassFilterOrder == 0.0) {
+        _lowPassFilterOrder = [self floatForKey:kLowPassFilterOrder];
+    }
+    return _lowPassFilterOrder;
+}
+
+- (void)setLowPassGraphColor:(UIColor *)lowPassGraphColor {
+    _lowPassGraphColor = lowPassGraphColor;
+    
+    [self saveColor:lowPassGraphColor forKey:kLowPassGraphColor];
+}
+
+- (UIColor *)lowPassGraphColor {
+    if (_lowPassGraphColor == nil) {
+        _lowPassGraphColor = [self colorForKey:kLowPassGraphColor];
+    }
+    return _lowPassGraphColor;
 }
 
 #pragma mark - EZMicrophoneDelegate
@@ -299,22 +305,34 @@ withNumberOfChannels:(UInt32)numberOfChannels {
         hpf = 0;
         bpf = 0;
         
-        copy(bufferSize, tempData, buffer[0]);
-        lowpass.process(bufferSize, &tempData);
-        lpf = [EZAudio average:tempData length:bufferSize];
-        lpf = decibel(lpf/bufferSize) + self.lpNoiseFloor;
+        // Low pass
+        copy(bufferSize, tempDataLP, buffer[0]);
+        lowpass.process(bufferSize, &tempDataLP);
+        if([self.delegate respondsToSelector:@selector(lowPassDidFinish:withBufferSize:)]) {
+            [self.delegate lowPassDidFinish:tempDataLP withBufferSize:bufferSize];
+        }
+        lpf = [EZAudio average:tempDataLP length:bufferSize];
+        lpf = decibel(lpf/bufferSize) + self.lowPassGain*10;
         lpf = lpf < 0 ? 0 : lpf;
         
-        copy(bufferSize, tempData, buffer[0]);
-        highpass.process(bufferSize, &tempData);
-        hpf = [EZAudio average:tempData length:bufferSize];
-        hpf = decibel(hpf/bufferSize) + self.hpNoiseFloor;
+        // High pass
+        copy(bufferSize, tempDataHP, buffer[0]);
+        highpass.process(bufferSize, &tempDataHP);
+        if([self.delegate respondsToSelector:@selector(highPassDidFinish:withBufferSize:)]) {
+            [self.delegate highPassDidFinish:tempDataHP withBufferSize:bufferSize];
+        }
+        hpf = [EZAudio average:tempDataHP length:bufferSize];
+        hpf = decibel(hpf/bufferSize) + self.highPassGain*10;
         hpf = hpf < 0 ? 0 : hpf;
         
-        copy(bufferSize, tempData, buffer[0]);
-        bandpass.process(bufferSize, &tempData);
-        bpf = [EZAudio average:tempData length:bufferSize];
-        bpf = decibel(bpf/bufferSize) + self.bpNoiseFloor;
+        // Band pass
+        copy(bufferSize, tempDataBP, buffer[0]);
+        bandpass.process(bufferSize, &tempDataBP);
+        if([self.delegate respondsToSelector:@selector(bandPassDidFinish:withBufferSize:)]) {
+            [self.delegate bandPassDidFinish:tempDataBP withBufferSize:bufferSize];
+        }
+        bpf = [EZAudio average:tempDataBP length:bufferSize];
+        bpf = decibel(bpf/bufferSize) + self.bandPassGain*10;
         bpf = bpf < 0 ? 0 : bpf;
         
     });
@@ -329,6 +347,49 @@ withNumberOfChannels:(UInt32)numberOfChannels {
    withBufferSize:(UInt32)bufferSize
 withNumberOfChannels:(UInt32)numberOfChannels {
     // Getting audio data as a buffer list that can be directly fed into the EZRecorder or EZOutput. Say whattt...
+}
+
+#pragma mark - Public Category
+
+- (void)resetBandPassFilter {
+    bandpass.setup(_bandPassFilterOrder, 44100, _bandPassCutOff, _bandPassBandWidth);
+    bandpass.reset();
+}
+
+- (void)resetHighPassFilter {
+    highpass.setup(_highPassFilterOrder, 44100, _highPassCutOff);
+    highpass.reset();
+}
+
+- (void)resetLowPassFilter {
+    lowpass.setup(_lowPassFilterOrder, 44100, _lowPassCutOff);
+    lowpass.reset();
+}
+
+#pragma mark - Private Category
+
+- (void)saveFloat:(float)value forKey:(NSString*)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSNumber numberWithFloat:value] forKey:key];
+    [defaults synchronize];
+}
+
+- (float)floatForKey:(NSString*)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return [[defaults objectForKey:key]floatValue];
+}
+
+- (void)saveColor:(UIColor*)color forKey:(NSString*)key {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
+    [defaults setObject:colorData forKey:key];
+    [defaults synchronize];
+}
+
+- (UIColor*)colorForKey:(NSString*)key {
+    NSData *colorData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    return (UIColor*)[NSKeyedUnarchiver unarchiveObjectWithData:colorData];
 }
 
 @end

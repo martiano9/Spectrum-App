@@ -8,17 +8,35 @@
 
 #import <Foundation/Foundation.h>
 
-#define lpfCutoffKey @"lpfCutoffVal"
 #define hpfCutoffKey @"hpfCutoffVal"
-#define bpfCutoffKey @"bpfCutoffVal"
-#define bpfBWKey @"bpfBWVal"
-#define lpfGraphColorKey @"ZColor"
+
 #define hpfGraphColorKey @"XColor"
-#define bpfGraphColorKey @"YColor"
 
-#define noiseFloorDefaultValue 100
+
+#define noiseFloorDefaultValue 10
 #define hpNoiseFloorKey @"kHPNoiseFloor"
-#define bpNoiseFloorKey @"kBPNoiseFloor"
-#define lpNoiseFloorKey @"kLPNoiseFloor"
 
+#define dFilterOrder 5;
 
+#define kHighPassGain            @"kHighPassGain"
+#define kHighPassCutOff          @"kHighPassCutOff"
+#define kHighPassFilterOrder     @"kHighPassFilterOrder"
+#define kHighPassGraphColor      @"kHighPassGraphColor"
+
+#define dHighPassCutOff         1100
+
+#define kBandPassGain           @"kBandPassGain"
+#define kBandPassCutOff         @"kBandPassCutOff"
+#define kBandPassBandWidth      @"kBandPassBandWidth"
+#define kBandPassFilterOrder    @"kBandPassFilterOrder"
+#define kBandPassGraphColor     @"kBandPassGraphColor"
+
+#define dBandPassCutOff         1000
+#define dBandPassBandWidth      100
+
+#define kLowPassGain            @"kLowPassGain"
+#define kLowPassCutOff          @"kLowPassCutOff"
+#define kLowPassFilterOrder     @"kLowPassFilterOrder"
+#define kLowPassGraphColor      @"kLowPassGraphColor"
+
+#define dLowPassCutOff          100
